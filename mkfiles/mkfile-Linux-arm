@@ -8,10 +8,10 @@ OS=		o
 AR=		ar
 ARFLAGS=	ruvs
 
-AS=		arm-none-eabi-gcc -c
+AS=		arm-linux-gnueabihf-gcc -c
 ASFLAGS=
 
-CC=		arm-none-eabi-gcc -c
+CC=		arm-linux-gnueabihf-gcc -c
 CFLAGS=		-O\
 		-Wuninitialized -Wunused-variable -Wreturn-type -Wimplicit\
 		-I$ROOT/Linux/arm/include\
@@ -20,7 +20,7 @@ CFLAGS=		-O\
 		-DLINUX_ARM
 
 ANSICPP=
-LD=		arm-none-eabi-gcc
+LD=		arm-linux-gnueabihf-gcc
 LDFLAGS=
 
 SYSLIBS=
