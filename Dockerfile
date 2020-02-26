@@ -1,7 +1,7 @@
-FROM i386/ubuntu:devel
+FROM ubuntu:18.04
 
-RUN apt-get -y update
-RUN apt-get install -y libx11-dev \
+RUN apt-get -yqq update && apt-get install -yqq \
+    libx11-dev \
 	libxext-dev \
 	libc6-dev \
 	gcc
@@ -20,7 +20,7 @@ RUN echo > mkconfig ROOT=$INFERNO
 RUN echo >>mkconfig TKSTYLE=std
 RUN echo >>mkconfig SYSHOST=Linux
 RUN echo >>mkconfig SYSTARG=Linux
-RUN echo >>mkconfig OBJTYPE=386
+RUN echo >>mkconfig OBJTYPE=arm
 
 RUN echo >>mkconfig 'OBJDIR=$SYSTARG/$OBJTYPE'
 RUN echo >>mkconfig '<$ROOT/mkfiles/mkhost-$SYSHOST'
@@ -28,9 +28,8 @@ RUN echo >>mkconfig '<$ROOT/mkfiles/mkfile-$SYSTARG-$OBJTYPE'
 
 # build code
 RUN ./makemk.sh
-ENV PATH="$INFERNO/Linux/386/bin:${PATH}"
+ENV PATH="$INFERNO/Linux/arm/bin:${PATH}"
 RUN mk nuke
 RUN mk install
 
 CMD ["emu", "-c1",  "wm/wm"]
-
