@@ -42,4 +42,8 @@ ENV PATH="$INFERNO/Linux/arm/bin:${PATH}"
 RUN mk nuke
 RUN mk install
 
-CMD ["emu", "-c1",  "wm/wm"]
+# create user that can write to inferno user dir
+RUN useradd -mrs /bin/bash inferno
+USER inferno
+
+CMD ["emu", "-c0"]
