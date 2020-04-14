@@ -11,9 +11,11 @@ ARFLAGS=	ruvs
 AS=		gcc -c
 ASFLAGS=
 
+# Setting -mcpu will auto maticallt set -march and -mtune, unless those options are set manually.
 CC=		gcc -c
-CFLAGS=		-O\
+CFLAGS=		-g -ggdb3 -O3 \
 		-Wuninitialized -Wunused-variable -Wreturn-type -Wimplicit\
+		-pipe -marm -mfpu=neon -mcpu=cortex-a15.cortex-a7 -mfloat-abi=hard \
 		-I$ROOT/Linux/arm/include\
 		-I$ROOT/include\
 		-DLINUX_ARM
