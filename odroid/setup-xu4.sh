@@ -44,8 +44,8 @@ add-apt-repository \
 apt-get install -y docker-ce docker-ce-cli containerd.io
 
 # Get the inferno project
-mkdir -p /srv/inferno
-git clone https://github.com/Notgnoshi/inferno-os.git /srv/inferno --branch dev/native-arm
+#mkdir -p /srv/inferno
+#git clone https://github.com/Notgnoshi/inferno-os.git /srv/inferno --branch dev/native-arm
 
 cd /srv/inferno
 
