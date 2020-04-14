@@ -4,6 +4,9 @@
 *.dis
 *.sbl
 
+.dockerignore
+Dockerfile
+
 # the following are copied from .hgignore
 *.[8qkv5967o]
 *.obj

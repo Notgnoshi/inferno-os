@@ -44,6 +44,7 @@ RUN mk install
 
 # create user that can write to inferno user dir
 RUN useradd -mrs /bin/bash inferno
+RUN chown -R inferno:inferno $INFERNO
 USER inferno
 
 CMD ["emu", "-c0"]
