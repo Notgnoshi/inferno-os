@@ -11,7 +11,8 @@
 !include/
 !lib*/
 !limbo/
-!Linux/*/include
+!Linux/arm/include
+!Linux/386/include
 !mkfiles/
 !os/
 !tools/
