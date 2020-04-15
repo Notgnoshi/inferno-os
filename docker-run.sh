@@ -17,4 +17,4 @@ docker run \
     --mount type=bind,src="$(pwd)/usr/inferno",dst=$WORKSPACE/usr/inferno \
     --mount type=bind,src="$(pwd)/lib",dst=$WORKSPACE/lib \
     --mount type=bind,src="$(pwd)/keydb",dst=$WORKSPACE/keydb \
-    inferno/386:latest emu -c1 sh -l
+    inferno/arm:latest emu -c0 sh -l
