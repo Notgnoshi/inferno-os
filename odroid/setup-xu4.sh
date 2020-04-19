@@ -27,6 +27,9 @@ git config --global core.editor vim
 echo "AcceptEnv GIT_AUTHOR_* GIT_COMMITTER_*" >> /etc/ssh/sshd_config
 systemctl restart ssh.service
 
+# Set up dns for root node
+echo "192.168.0.1	xu401" >> /etc/hosts
+
 # Install docker
 # https://docs.docker.com/install/linux/docker-ce/ubuntu/
 apt-get install -y \
