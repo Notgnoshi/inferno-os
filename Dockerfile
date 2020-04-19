@@ -23,7 +23,7 @@ RUN curl -s -L https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh
 #RUN apt-get install -y gcc-multilib
 
 # Create an inferno user.
-ARG USER=inferno
+ARG USER=worker
 ARG UID=1000
 ARG GID=1000
 RUN groupadd -g $GID -o $USER
