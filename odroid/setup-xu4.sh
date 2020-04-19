@@ -23,6 +23,10 @@ apt-get install -y \
 apt-get install git bash-completion -y
 git config --global core.editor vim
 
+# Allow forwarding of git env settings
+echo "AcceptEnv GIT_AUTHOR_* GIT_COMMITTER_*" >> /etc/ssh/sshd_config
+systemctl restart ssh.service
+
 # Install docker
 # https://docs.docker.com/install/linux/docker-ce/ubuntu/
 apt-get install -y \
