@@ -14,7 +14,7 @@ docker run \
     --tty \
     --network=host \
     --name inferno_emu \
-    --mount type=bind,src="$(pwd)/usr/inferno",dst=$WORKSPACE/usr/inferno \
+    --mount type=bind,src="$(pwd)/usr",dst=$WORKSPACE/usr \
     --mount type=bind,src="$(pwd)/lib",dst=$WORKSPACE/lib \
     --mount type=bind,src="$(pwd)/keydb",dst=$WORKSPACE/keydb \
     inferno/arm:latest emu -c0 sh -l
