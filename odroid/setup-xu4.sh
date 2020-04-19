@@ -58,3 +58,7 @@ cd /srv/inferno
 
 # Build the ARM image
 docker build -t inferno/arm:latest .
+
+# Make usr and keydb dirs writable; they're bound into the container
+# but inferno will also put things in them
+chmod -R ugo+w ./usr ./keydb
