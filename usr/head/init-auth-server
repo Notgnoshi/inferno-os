@@ -1,0 +1,28 @@
+#!/dis/sh.dis -n
+
+# Sets up a signer key and creates the odroid
+# account. This only needs to be done once on
+# the head node; after that, it is sufficient
+# to just run svc/auth when new certificates
+# need to be signed
+
+or {ftest -f /keydb/signerkey} {
+    echo 'Signer key does not exist, creating...'
+    auth/createsignerkey `{cat /dev/sysname}
+
+    or {ftest -f /keydb/signerkey} {
+        echo 'ERROR: Failed to create signer key'
+        raise nosignerkey
+    }
+}
+
+svc/auth
+
+echo 'Setting up "odroid" user...'
+or {auth/changelogin odroid} {
+    echo 'ERROR: Failed to create user'
+    raise nousercreated
+}
+
+echo 'Getting default key...'
+getauthinfo default

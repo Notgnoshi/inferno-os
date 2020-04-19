@@ -1,7 +1,5 @@
 # Set up expected directories and files
 mkdir -p /keydb
-mkdir -p /mnt
-mkdir -p /n
 mkdir -p $home/keyring
 
 touch /keydb/keys
