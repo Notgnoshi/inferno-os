@@ -9,6 +9,7 @@ touch /keydb/keys
 # Create common mount points
 mkdir -p /mnt
 mkdir -p /n
+mkdir -p /tmp
 
 mount -a {mntgen} /mnt
 mount -a {mntgen} /n
@@ -17,5 +18,9 @@ mount -a {mntgen} /n
 ndb/cs
 ndb/dns
 
-# Run file and cpu servers if key is present
-and {ftest -f $home^/keyring/default} {svc/net}
+# If key is present, then serve root dir
+# and cpu as a worker
+and {ftest -f $home^/keyring/default} {
+	svc/net
+	svc/rstyx
+}
