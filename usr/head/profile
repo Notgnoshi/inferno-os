@@ -7,6 +7,7 @@ touch /keydb/keys
 # Create common mount points
 mkdir -p /mnt
 mkdir -p /n
+mkdir -p /tmp
 
 mount -a {mntgen} /mnt
 mount -a {mntgen} /n
@@ -14,3 +15,23 @@ mount -a {mntgen} /n
 # Set up network stack
 ndb/cs
 ndb/dns
+
+# 'Mount' self
+bind / /n/xu401
+
+# Mount CPU nodes
+mount -a {mntgen} /n/cpus
+
+# TODO: Find a way to make these discoverable
+cpus=xu402 xu403 xu404 xu405 xu406 xu407 xu408 xu409 xu410 xu411 xu412 xu413 xu414 xu415 xu416
+
+apply {
+    mount -P 'tcp!'^$1^'!styx' /n/cpus/^$1 &
+} $cpus
+
+# Export /n over styx, effectively exporting
+# the entire cluster under one directory
+listen 'tcp!*!styx' {export /n&}
+
+# Run a cpu server for remote users of the cluster
+/svc/rstyx
